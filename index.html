@@ -12,7 +12,7 @@
             background-color: #f4f4f4;
             color: #333;
         }
-        
+
         header {
             background: #ff6600;
             color: #fff;
@@ -20,34 +20,34 @@
             text-align: center;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
-        
+
         nav ul {
             list-style: none;
             padding: 0;
             margin: 0;
         }
-        
+
         nav ul li {
             display: inline;
             margin: 0 1rem;
         }
-        
+
         nav ul li a {
             color: #fff;
             text-decoration: none;
             font-weight: bold;
         }
-        
+
         nav ul li a:hover {
             text-decoration: underline;
         }
-        
+
         main {
             padding: 2rem;
             max-width: 1200px;
             margin: auto;
         }
-        
+
         footer {
             background: #333;
             color: #fff;
@@ -58,12 +58,12 @@
             width: 100%;
             box-shadow: 0 -2px 4px rgba(0,0,0,0.1);
         }
-        
+
         .search-container {
             margin-bottom: 2rem;
             text-align: center;
         }
-        
+
         .search-container input[type="text"] {
             width: 80%;
             max-width: 600px;
@@ -72,7 +72,7 @@
             border: 1px solid #ccc;
             border-radius: 4px;
         }
-        
+
         .profile-list {
             display: flex;
             flex-direction: column;
@@ -80,7 +80,7 @@
             max-width: 800px;
             margin: auto;
         }
-        
+
         .profile-card {
             display: flex;
             align-items: center;
@@ -89,32 +89,86 @@
             border-radius: 4px;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
-        
+
         .profile-card img {
             width: 50px;
             height: 50px;
             border-radius: 50%;
             margin-right: 1rem;
         }
-        
+
         .profile-card h3 {
             margin: 0;
             font-size: 1rem;
         }
-        
+
         .profile-card p {
             margin: 0;
             color: #555;
         }
-        
+
         .profile-card a {
             text-decoration: none;
             color: #ff6600;
             font-weight: bold;
         }
-        
+
         .profile-card a:hover {
             text-decoration: underline;
+        }
+
+        /* Styl pro vyskakovací okno */
+        .popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .popup-content {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            text-align: center;
+            max-width: 300px;
+            width: 100%;
+        }
+
+        .popup-content h2 {
+            margin-bottom: 1rem;
+        }
+
+        .popup-options {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .popup-options button {
+            padding: 0.75rem;
+            font-size: 1rem;
+            cursor: pointer;
+            border: none;
+            background-color: #ff6600;
+            color: #fff;
+            border-radius: 4px;
+        }
+
+        .popup-options button:hover {
+            background-color: #e65c00;
+        }
+
+        .popup-options button:hover::after {
+            content: attr(data-hover);
+            display: block;
+            color: #000;
+            margin-top: 5px;
         }
     </style>
 </head>
@@ -138,14 +192,29 @@
             <div class="profile-card">
                 <img src="https://i.ibb.co/42B1m2M/imresizer-1724402968617-1.png" alt="Profil 1">
                 <div>
-                    <h3><a href="https://smix-video.vercel.app/c/smiloscz">SmilosCZ</a></h3>
+                    <h3><a href="profile1.html">SmilosCZ</a></h3>
                     <p>První profil na SmiX Video</p>
                 </div>
-        
             </div>
-            <!-- Přidejte další profily dle potřeby -->
         </div>
     </main>
+
+    <div class="popup" id="popup">
+        <div class="popup-content">
+            <h2>Kdo se dívá?</h2>
+            <div class="popup-options">
+                <button data-hover="Člověk starší 18 let" onclick="closePopup()">Dospělý člověk</button>
+                <button data-hover="Dítě starší 13 let" onclick="closePopup()">Teenager</button>
+                <button data-hover="Dítě mladší 13 let" onclick="closePopup()">Dítě</button>
+            </div>
+            <p style="margin-top: 20px; font-size: 0.9rem; color: #555;">
+                Pečujeme o bezpečí dětí na internetu a zajišťujeme, aby obsah byl vhodný pro všechny věkové kategorie.
+            </p>
+        </div>
+    </div>
+    
+        </div>
+    </div>
 
     <script>
         function filterProfiles() {
@@ -162,6 +231,16 @@
                     profile.style.display = 'none';
                 }
             });
+        }
+
+        // Funkce pro zobrazení popupu při načtení stránky
+        window.onload = function() {
+            document.getElementById('popup').style.display = 'flex';
+        }
+
+        // Funkce pro zavření popupu
+        function closePopup() {
+            document.getElementById('popup').style.display = 'none';
         }
     </script>
 </body>
