@@ -152,7 +152,19 @@
             </div>
         </div>
     </main>
-
+<div class="popup" id="popup">
+        <div class="popup-content">
+            <h2>Kdo se dívá?</h2>
+            <div class="popup-options">
+                <button data-hover="Člověk starší 18 let" onclick="closePopup()">Dospělý člověk</button>
+                <button data-hover="Dítě starší 13 let" onclick="closePopup()">Teenager</button>
+                <button data-hover="Dítě mladší 13 let" onclick="closePopup()">Dítě</button>
+            </div>
+            <p style="margin-top: 20px; font-size: 0.9rem; color: #555;">
+                Pečujeme o bezpečí dětí na internetu a zajišťujeme, aby obsah byl vhodný pro všechny věkové kategorie.
+            </p>
+        </div>
+    </div>
     <script>
         function filterProfiles() {
             const searchInput = document.getElementById('searchProfiles').value.toLowerCase();
@@ -190,6 +202,16 @@
             // Odstraň všechny děti z profileList a přidej zamíchané profily
             profileList.innerHTML = '';
             shuffledProfiles.forEach(profile => profileList.appendChild(profile));
+        }
+
+        // Funkce pro zobrazení popupu při načtení stránky
+        window.onload = function() {
+            document.getElementById('popup').style.display = 'flex';
+        }
+
+        // Funkce pro zavření popupu
+        function closePopup() {
+            document.getElementById('popup').style.display = 'none';
         }
     </script>
 </body>
